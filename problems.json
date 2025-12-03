@@ -1,0 +1,338 @@
+[
+  {
+    "title": "The \"ErrGroup\" Implementation",
+    "topic": "Synchronization, Error Handling",
+    "difficulty": "Medium",
+    "markdown": "# The \"ErrGroup\" Implementation\n\nRecreate a simplified version of `errgroup.Group`. Implement a struct that launches multiple goroutines. It should wait for all of them to finish and return the first non-nil error encountered. If any goroutine errors, the context should ideally be canceled.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Concurrent Prime Sieve",
+    "topic": "Channels, Algorithms",
+    "difficulty": "Hard",
+    "markdown": "# Concurrent Prime Sieve\n\nImplement a concurrent Prime Sieve (Sieve of Eratosthenes) using a daisy-chain of channels. Generate numbers in the main routine and filter them through a chain of goroutines, where each goroutine filters out multiples of a specific prime.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Broadcast Signal (Pub/Sub)",
+    "topic": "Patterns, Channels",
+    "difficulty": "Medium",
+    "markdown": "# Broadcast Signal (Pub/Sub)\n\nCreate a system where a single \"producer\" can send a message that is received by multiple \"subscribers.\" If a subscriber is slow, it should not block the producer. Discuss whether to use buffered channels or a cond variable.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Atomic Counter vs. Mutex",
+    "topic": "Benchmarking, Atomics",
+    "difficulty": "Medium",
+    "markdown": "# Atomic Counter vs. Mutex\n\nWrite two versions of a thread-safe counter struct. One using `sync.Mutex` and one using `sync/atomic`. Write a benchmark test (`testing.B`) to compare the performance of both under high contention.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Graceful Shutdown",
+    "topic": "Systems, Signals",
+    "difficulty": "Medium",
+    "markdown": "# Graceful Shutdown\n\nWrite a TCP server or HTTP server that listens for OS interrupt signals (SIGINT/SIGTERM). When a signal is received, the server should stop accepting new connections and wait for existing requests to finish (with a timeout) before exiting.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "The Nil Interface Trap",
+    "topic": "Interfaces, Pointers",
+    "difficulty": "Hard",
+    "markdown": "# The Nil Interface Trap\n\nWrite a function that returns a custom error interface. Demonstrate the scenario where returning a nil pointer to a struct results in a non-nil interface value. Explain why `if err != nil` fails in this case and how to fix the code.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Mocking for Tests",
+    "topic": "Testing, Refactoring",
+    "difficulty": "Medium",
+    "markdown": "# Mocking for Tests\n\nGiven a function `FetchUser` that directly calls a database, refactor it to use an interface (Dependency Injection). Create a \"Mock\" implementation of that interface to test the business logic without a running database.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Custom io.Reader",
+    "topic": "IO, Interfaces",
+    "difficulty": "Easy",
+    "markdown": "# Custom io.Reader\n\nImplement a struct that satisfies the `io.Reader` interface. It should generate an infinite stream of the character 'A', but be readable in chunks of any size specified by the caller's byte slice.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Context Value Injection",
+    "topic": "Context, HTTP",
+    "difficulty": "Medium",
+    "markdown": "# Context Value Injection\n\nWrite a middleware that extracts a \"Trace-ID\" from an HTTP header and injects it into the request context. Then, write a helper function to retrieve that ID from the context safely in a deeper layer of the application.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Custom Error Wrapping",
+    "topic": "Error Handling",
+    "difficulty": "Medium",
+    "markdown": "# Custom Error Wrapping\n\nDefine a custom error struct that contains an error code and a message. Implement the `Unwrap()` method so that `errors.Is` and `errors.As` work correctly with standard library error chains.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Concurrent Map (Sharded)",
+    "topic": "Optimization, Maps",
+    "difficulty": "Hard",
+    "markdown": "# Concurrent Map (Sharded)\n\nThe standard map is not thread-safe, and a single `sync.RWMutex` over a map causes contention. Implement a \"Sharded Map\" where the key space is hashed into N buckets, each with its own lock, to improve concurrent write performance.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Generic Set Implementation",
+    "topic": "Generics, Data Structures",
+    "difficulty": "Medium",
+    "markdown": "# Generic Set Implementation\n\nGo doesn't have a built-in Set type. Use Go Generics (Go 1.18+) to implement a `Set[T comparable]` struct with `Add`, `Remove`, and `Contains` methods. Underlying storage should be a map.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "In-Place Slice Reversal",
+    "topic": "Slices, Pointers",
+    "difficulty": "Easy",
+    "markdown": "# In-Place Slice Reversal\n\nWrite a function to reverse a slice of generic elements in place (without allocating a new slice). Use two pointers (left and right) and swap elements until they meet in the middle.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Merging Sorted Channels",
+    "topic": "Sorting, Channels",
+    "difficulty": "Hard",
+    "markdown": "# Merging Sorted Channels\n\nYou are given N sorted channels of integers. Write a function to merge them into a single sorted channel. You must efficiently pick the smallest available number from the heads of the input channels.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Detecting Cyclic Dependencies",
+    "topic": "Graphs, Recursion",
+    "difficulty": "Medium",
+    "markdown": "# Detecting Cyclic Dependencies\n\nGiven a list of imports (graph), determine if there is a circular dependency. Represent the data as a map of strings (package names) to slices of strings (imports). Use Depth First Search (DFS).\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Circuit Breaker Pattern",
+    "topic": "Resilience, Microservices",
+    "difficulty": "Hard",
+    "markdown": "# Circuit Breaker Pattern\n\nImplement a stateful Circuit Breaker. It wraps a function call; if the function fails X times consecutively, the breaker \"trips\" (Open state) and immediately errors for a set duration before allowing a test request (Half-Open state).\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "TCP Chat Server",
+    "topic": "Networking, IO",
+    "difficulty": "Medium",
+    "markdown": "# TCP Chat Server\n\nBuild a basic TCP server where clients can telnet in. Whatever one client types is broadcast to all other connected clients. Handle client disconnections gracefully without crashing the server.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Round-Robin Load Balancer",
+    "topic": "Systems, Mutex",
+    "difficulty": "Medium",
+    "markdown": "# Round-Robin Load Balancer\n\nCreate a struct that holds a list of backend URLs. Implement a `Next()` method that returns the next URL in the list, cycling back to the start when it reaches the end. It must be thread-safe.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "File Crawler (Recursive)",
+    "topic": "Filesystem, Concurrency",
+    "difficulty": "Medium",
+    "markdown": "# File Crawler (Recursive)\n\nWrite a function that walks a directory tree concurrently to find all files ending in `.go`. Use `filepath.Walk` or `os.ReadDir`. Limit the number of concurrent file reads to prevent \"too many open files\" errors.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Leaky Bucket Rate Limiter",
+    "topic": "Queues, Systems",
+    "difficulty": "Hard",
+    "markdown": "# Leaky Bucket Rate Limiter\n\nImplement a rate limiter where requests enter a queue (bucket). A background process \"leaks\" (processes) items from the queue at a constant fixed rate. If the queue is full, new requests are dropped.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Type Assertions",
+    "topic": "Interfaces, Type System",
+    "difficulty": "Easy",
+    "markdown": "# Type Assertions\n\nWrite a function that accepts an empty interface and uses type assertion to extract values of different types (string, int, float64, custom struct). Handle the case where the type is unknown using the comma-ok syntax. What happens if you assert to the wrong type without the comma-ok check?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Defer Stack (LIFO)",
+    "topic": "Control Flow, Memory",
+    "difficulty": "Easy",
+    "markdown": "# Defer Stack (LIFO)\n\nWrite a function that uses multiple `defer` statements. Print the order in which they execute. Demonstrate that deferred functions are called in Last-In-First-Out order, and explain how this is useful for resource cleanup (files, locks, database transactions).\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Simple Ticker",
+    "topic": "Time, Concurrency",
+    "difficulty": "Easy",
+    "markdown": "# Simple Ticker\n\nWrite a program that prints the current time every second using `time.Ticker`. Let it run for 5 seconds, then stop the ticker gracefully. What happens if you don't call `Stop()` on the ticker? Explain the difference between `time.Ticker` and `time.After()`.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Variadic Functions",
+    "topic": "Functions, Syntax",
+    "difficulty": "Easy",
+    "markdown": "# Variadic Functions\n\nWrite a variadic function `Sum(nums ...int)` that returns the total of all arguments. Also write a function `PrintAll(vals ...interface{})` that accepts any number of values of any type and prints them formatted. How do you pass a slice as variadic arguments using the `...` operator?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Struct Embedding vs. Composition",
+    "topic": "Structs, OOP",
+    "difficulty": "Easy",
+    "markdown": "# Struct Embedding vs. Composition\n\nDefine a `Person` struct with name and age. Create an `Employee` struct that embeds `Person` and adds a salary field. Demonstrate that methods on `Person` are automatically available on `Employee` (method promotion). What are the benefits and drawbacks of embedding vs. explicit composition?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Worker Pool",
+    "topic": "Concurrency, Patterns",
+    "difficulty": "Medium",
+    "markdown": "# Worker Pool\n\nImplement a worker pool with a fixed number of goroutines (e.g., 5) that consume jobs from a buffered channel. Each job is a function `func()`. Submit multiple jobs and ensure they are processed concurrently by the available workers. How do you gracefully shutdown the pool and wait for in-flight jobs to complete?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Fan-Out / Fan-In",
+    "topic": "Channels, Patterns",
+    "difficulty": "Medium",
+    "markdown": "# Fan-Out / Fan-In\n\nImplement fan-out (one input channel distributes to multiple worker goroutines) and fan-in (multiple input channels merged into one output channel). Write a `merge()` function that takes N channels and returns a single channel. Handle goroutine cleanup when done. Use `sync.WaitGroup` if needed.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Select Statement Timeout",
+    "topic": "Channels, Control Flow",
+    "difficulty": "Medium",
+    "markdown": "# Select Statement Timeout\n\nWrite a function that calls a slow operation via a channel but times out after 2 seconds using `time.After()`. Use a `select` statement to race the result channel against the timeout. What are the gotchas with `time.After()` regarding goroutine leaks? How does `time.WithDeadline` relate?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Reflection: Dynamic Method Calling",
+    "topic": "Reflection, Interfaces",
+    "difficulty": "Medium",
+    "markdown": "# Reflection: Dynamic Method Calling\n\nWrite a function that accepts an interface{}, inspects its type using the `reflect` package, and calls a specific method by name dynamically. Handle errors if the method doesn't exist or has incompatible signatures. What is the performance impact of reflection compared to direct method calls?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "JSON Marshaling Edge Cases",
+    "topic": "JSON, Encoding",
+    "difficulty": "Medium",
+    "markdown": "# JSON Marshaling Edge Cases\n\nDefine a struct with various struct tags: `json:\"fieldName\"`, `omitempty`, `string`, and `-`. Marshal and unmarshal it. Demonstrate how omitempty works, how the \"string\" tag forces string conversion of numbers, and why unexported fields are ignored in JSON.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Once Initialization Pattern",
+    "topic": "Synchronization, Patterns",
+    "difficulty": "Medium",
+    "markdown": "# Once Initialization Pattern\n\nUse `sync.Once` to implement a singleton pattern or initialize an expensive resource (e.g., database connection, logger) only once, even when called from multiple goroutines concurrently. Show how `sync.Once` guarantees thread-safe initialization and that the function is called exactly once.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Timeout with Context Deadline",
+    "topic": "Context, Control Flow",
+    "difficulty": "Medium",
+    "markdown": "# Timeout with Context Deadline\n\nWrite a function that performs long-running work with a deadline. Use `context.WithTimeout()` and check `ctx.Done()` in a loop or use `ctx.Deadline()`. Handle the case where the deadline expires before the work completes. How does this differ from `context.WithCancel()`?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Panic Recovery",
+    "topic": "Error Handling, Control Flow",
+    "difficulty": "Medium",
+    "markdown": "# Panic Recovery\n\nWrite a function that might panic. Wrap it with `recover()` to catch the panic and log it without crashing the program. Discuss when panics are appropriate vs. returning errors. Why is recovering from panics in production considered an anti-pattern in most cases?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Slice Append Gotcha",
+    "topic": "Slices, Memory",
+    "difficulty": "Medium",
+    "markdown": "# Slice Append Gotcha\n\nDemonstrate the difference between appending to a slice with available capacity vs. exceeding capacity (which reallocates the backing array). Show how the same underlying array can be shared by multiple slices and why modifying one slice can affect another. Use `cap()` vs. `len()` to understand the difference.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Map Concurrent Access Panic",
+    "topic": "Maps, Concurrency",
+    "difficulty": "Medium",
+    "markdown": "# Map Concurrent Access Panic\n\nWrite two goroutines that concurrently read and write to the same map. Demonstrate that this causes a runtime panic (\"fatal error: concurrent map iteration and map write\"). Then fix it using `sync.RWMutex` to protect the map. What about concurrent reads?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Testing with TableDriven Tests",
+    "topic": "Testing, Best Practices",
+    "difficulty": "Medium",
+    "markdown": "# Testing with TableDriven Tests\n\nWrite a function that processes input (e.g., validates email or parses commands) and create comprehensive table-driven tests. Each row in a test table should have input, expected output, and optional error expectation. Show how this pattern makes it easy to add new test cases and is more readable.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "HTTP Request Context Cancellation",
+    "topic": "HTTP, Context",
+    "difficulty": "Medium",
+    "markdown": "# HTTP Request Context Cancellation\n\nWrite an HTTP client that makes a request to a URL but cancels it after 3 seconds using context. Use `context.WithTimeout()` to wrap the request context. Show how to pass the context through to the request. What cleanup happens when a context is canceled?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Custom Type with String Method",
+    "topic": "Interfaces, String Formatting",
+    "difficulty": "Medium",
+    "markdown": "# Custom Type with String Method\n\nDefine a custom type (e.g., struct or value type like `type Duration int`) and implement the `String()` method (part of `fmt.Stringer` interface). Show how this customizes the output when printing with `fmt.Println` or `%v`, `%s` format verbs. How does this relate to duck typing?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "WaitGroup Patterns",
+    "topic": "Synchronization, Concurrency",
+    "difficulty": "Medium",
+    "markdown": "# WaitGroup Patterns\n\nUse `sync.WaitGroup` to spawn multiple goroutines, wait for all to complete, then proceed. Demonstrate a common pattern: spawn N workers, feed them jobs from a channel, and wait for all to finish. What happens if you Add() after calling Wait()?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Distributed Tracing with Context",
+    "topic": "Context, Systems",
+    "difficulty": "Hard",
+    "markdown": "# Distributed Tracing with Context\n\nBuild a small system where HTTP handlers pass a trace ID through context to service functions and down to repository/database calls. Implement logging middleware that extracts and adds the trace ID to all logs. Show how context propagation enables end-to-end request tracking across layers.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Type-Safe Generic Stack",
+    "topic": "Generics, Data Structures",
+    "difficulty": "Hard",
+    "markdown": "# Type-Safe Generic Stack\n\nImplement a generic stack data structure `Stack[T any]` using Go 1.18+ generics. Include `Push(T)`, `Pop() (T, error)`, `Peek() (T, error)`, and `Size() int`. Write comprehensive tests covering edge cases. How does this compare to interface{} approaches in terms of type safety and performance?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Reflection: Struct Field Validation",
+    "topic": "Reflection, Validation",
+    "difficulty": "Hard",
+    "markdown": "# Reflection: Struct Field Validation\n\nWrite a validation function that uses reflection to inspect struct fields and their tags (e.g., `validate:\"required,min=5,max=20\"`). Validate the struct and return a map of field names to lists of validation errors. How would you handle nested structs and slices of structs?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Buffered Channel Deadlock Detection",
+    "topic": "Channels, Debugging",
+    "difficulty": "Hard",
+    "markdown": "# Buffered Channel Deadlock Detection\n\nWrite scenarios that cause deadlocks with buffered and unbuffered channels: sending on a full channel from the only goroutine, receiving before sending, circular waits. Explain why each deadlocks. Use `go run -race` with the race detector to catch data races and understand interleaving issues.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Semaphore Pattern (Weighted)",
+    "topic": "Synchronization, Concurrency",
+    "difficulty": "Hard",
+    "markdown": "# Semaphore Pattern (Weighted)\n\nImplement a weighted semaphore using channels or `golang.org/x/sync/semaphore`. Allow N goroutines to acquire a permit (weight), blocking additional goroutines until permits are released. Use this to limit concurrent database connections or file I/O operations.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Unsafe Pointer Manipulation",
+    "topic": "Unsafe, Memory",
+    "difficulty": "Hard",
+    "markdown": "# Unsafe Pointer Manipulation\n\nUse the `unsafe` package to bypass Go's memory safety (for learning only). Cast a struct pointer to a different type, read memory directly, or manipulate internal fields. Explain why this is dangerous and when it might be justified in performance-critical code. What about alignment requirements?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "RPC Server with JSON-RPC Protocol",
+    "topic": "Networking, Serialization",
+    "difficulty": "Hard",
+    "markdown": "# RPC Server with JSON-RPC Protocol\n\nBuild a simple JSON-RPC server that listens on a TCP port and handles remote procedure calls. Define methods that can be called remotely, handle errors, and serialize/deserialize parameters and return values. Test it with a client that sends JSON-RPC requests.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Lock-Free Counter with Atomics",
+    "topic": "Atomics, Concurrency",
+    "difficulty": "Hard",
+    "markdown": "# Lock-Free Counter with Atomics\n\nImplement a high-performance counter using only `sync/atomic` operations (no locks). Compare it against a mutex-based counter with benchmarks under high contention. Discuss the ABA problem, memory ordering guarantees, and why lock-free is not always faster.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Goroutine Leak Detection in Tests",
+    "topic": "Testing, Concurrency",
+    "difficulty": "Hard",
+    "markdown": "# Goroutine Leak Detection in Tests\n\nWrite a test helper that counts goroutines at the start and end of a test to detect leaks. Intentionally write code that leaks goroutines (unbounded channel sends, blocked receives, missing close()), then fix each. How do goroutine profilers help debugging?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Custom Iterator Protocol (Go 1.22+)",
+    "topic": "Iterators, Ranges",
+    "difficulty": "Hard",
+    "markdown": "# Custom Iterator Protocol (Go 1.22+)\n\nIn Go 1.22+, implement the iterator protocol using `yield` callbacks. Write a `Range(start, end int, yield func(int) bool)` function that can be used with `for x := range Range(0, 10) { }`. Explain how this relates to Python's `yield` and the pull vs. push model.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "RWMutex from Scratch",
+    "topic": "Synchronization, Concurrency",
+    "difficulty": "Hard",
+    "markdown": "# RWMutex from Scratch\n\nImplement a simplified `RWMutex` from scratch using `sync.Mutex` and condition variables (`sync.Cond`). Support multiple concurrent readers but exclusive writers. Explain the fairness guarantees and starvation considerations. How does it compare to Go's `sync.RWMutex`?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "SQL Connection Pool",
+    "topic": "Databases, Concurrency",
+    "difficulty": "Hard",
+    "markdown": "# SQL Connection Pool\n\nImplement a thread-safe connection pool that maintains a fixed number of database connections, reuses them, and blocks callers when all are busy until one is returned. Use `sync.Cond` to notify waiters when a connection becomes available. How do you handle timeout and connection validation?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Memory Profiling & Leak Detection",
+    "topic": "Memory, Debugging",
+    "difficulty": "Hard",
+    "markdown": "# Memory Profiling & Leak Detection\n\nWrite code that gradually leaks memory due to unbounded goroutine creation or unbounded channel buffers. Use `pprof` to detect the leak (heap profile, goroutine profile). Implement fixes such as worker pools, bounded queues, and proper cleanup. How do you automate leak detection in CI?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Custom Profiling Framework",
+    "topic": "Performance, Reflection",
+    "difficulty": "Hard",
+    "markdown": "# Custom Profiling Framework\n\nBuild a lightweight profiling framework that measures function execution time and call counts. Use reflection to wrap function calls and collect metrics. Store results in a struct and generate a report of slowest functions and call frequency. Compare to pprof and runtime/trace.\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Query Builder with Generics",
+    "topic": "Generics, SQL",
+    "difficulty": "Hard",
+    "markdown": "# Query Builder with Generics\n\nWrite a minimal query builder or ORM-like layer that builds SQL SELECT statements from struct definitions using Go generics. Use reflection to inspect struct fields and tags, then generate parameterized queries with proper escaping. How would you handle joins and complex queries?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Constraint-Based Generic Programming",
+    "topic": "Generics, Algorithms",
+    "difficulty": "Hard",
+    "markdown": "# Constraint-Based Generic Programming\n\nUse Go generics with custom constraint types to build reusable functions. Example: `Filter[T Comparable](items []T, predicate func(T) bool) []T` where `Comparable` is a constraint. Build multiple generic data structures (Queue, Heap) with constraints. How do constraints improve code clarity?\n\n```go\n// Your implementation here\n```"
+  },
+  {
+    "title": "Zero-Copy Protocol Parsing",
+    "topic": "Performance, IO",
+    "difficulty": "Hard",
+    "markdown": "# Zero-Copy Protocol Parsing\n\nWrite a protocol parser that works directly on a byte buffer without allocating new slices for each field (zero-copy). Use unsafe pointers or direct byte indexing to extract fields (strings, numbers). Benchmark against a naive approach. What are the safety tradeoffs?\n\n```go\n// Your implementation here\n```"
+  }
+]

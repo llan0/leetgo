@@ -1,0 +1,19 @@
+# Nixpacks configuration for Railway
+[phases.setup]
+nixPkgs = ["nodejs-18_x", "bun", "go_1_25"]
+
+[phases.install]
+cmds = [
+  "cd web && bun install --frozen-lockfile",
+  "go mod download"
+]
+
+[phases.build]
+cmds = [
+  "cd web && bun run build",
+  "go build -o main ./cmd/api"
+]
+
+[start]
+cmd = "./main"
+

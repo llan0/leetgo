@@ -1,0 +1,13 @@
+# Railway ignore file
+node_modules/
+web/node_modules/
+web/dist/
+.git/
+.air.toml
+tmp/
+bin/
+*.log
+.DS_Store
+.vscode/
+.idea/
+
