@@ -20,8 +20,23 @@ func main() {
 
 	problemService := service.NewProblemService(storage)
 
+	// Railway provides PORT env var, use it if available
+	// Otherwise fallback to ADDR or default to :3000
+	port := env.GetString("PORT", "")
+	if port == "" {
+		addr := env.GetString("ADDR", ":3000")
+		// If ADDR already has format, use it; otherwise prepend :
+		if addr[0] == ':' {
+			port = addr[1:] // Remove leading :
+		} else {
+			port = addr
+		}
+	}
+	// Railway requires binding to 0.0.0.0, not localhost
+	addr := "0.0.0.0:" + port
+
 	server := api.NewServer(api.Config{
-		Addr:           env.GetString("ADDR", ":3000"),
+		Addr:           addr,
 		ProblemService: problemService,
 		Logger:         logger,
 		StaticDir:      env.GetString("STATIC_DIR", "web/dist"), // serve frontend in prod

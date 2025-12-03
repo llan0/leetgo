@@ -10,7 +10,6 @@
     "restartPolicyMaxRetries": 10
   },
   "envVars": {
-    "ADDR": ":3000",
     "STATIC_DIR": "web/dist"
   }
 }
